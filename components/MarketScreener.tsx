@@ -1295,8 +1295,9 @@ const MarketScreener: React.FC<MarketScreenerProps> = ({
         {/* ЛЕНТА ИЗБРАННОГО */}
 
         {!hideList && !isFullscreen && (
-          <div className="flex flex-col bg-[#0a0a0a] relative min-h-screen" id="market-feed-section">
-            <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/5 shadow-2xl z-[1000]">
+          <div className="w-full bg-[#0a0a0a]">
+            <div className="flex flex-col relative min-h-screen max-w-[1600px] mx-auto w-full" id="market-feed-section">
+              <div className="sticky top-0 bg-[#0a0a0a] border-b border-white/5 shadow-2xl z-[1000]">
               <div className="min-h-[44px] md:min-h-[56px] h-auto px-2 sm:px-4 py-3 flex flex-row flex-nowrap items-center gap-3 md:gap-4 shrink-0 relative z-[1010] overflow-x-auto no-scrollbar">
               {/* VIEW MODE PILL (IMAGE STYLE) */}
               <div className="flex items-center bg-[#0a0a0a] border border-zinc-800 rounded-full p-0.5 shrink-0">
@@ -1875,6 +1876,7 @@ const MarketScreener: React.FC<MarketScreenerProps> = ({
               </div>
             )}
           </div>
+        </div>
         </div>
       )}
       
