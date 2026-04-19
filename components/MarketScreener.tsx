@@ -546,12 +546,9 @@ const MarketScreener: React.FC<MarketScreenerProps> = ({
         // For PC in portrait
         setChartHeight(720);
       } else {
-        // For PC in landscape
-        setChartHeight(prev => {
-           // If we just exited fullscreen, or it's a default responsive value, reset to 660
-           if (exitedFullscreen || prev === 380 || prev === 320 || prev === 220 || prev === 600 || prev === 500) return 660;
-           return prev;
-        });
+        // For PC in landscape (adjust to fit exactly 1 coin row instead of 3 by removing ~120-130px from bottom area)
+        const calculatedHeight = height - 250;
+        setChartHeight(Math.max(300, calculatedHeight));
       }
     }
   }, [isFullscreen]);
