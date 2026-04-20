@@ -424,9 +424,8 @@ const Table: React.FC<{
   };
 
   return (
-    <div className="w-full bg-[#0a0a0a] flex-1">
-      <div className="w-full flex flex-col relative max-w-[1600px] mx-auto min-h-screen">
-        <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-[#0a0a0a] backdrop-blur-xl shrink-0 z-[40] pointer-events-auto">
+    <div className="w-full flex flex-col bg-[#0a0a0a] relative">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-[#0a0a0a] backdrop-blur-xl shrink-0 z-[40] pointer-events-auto">
         <div className="flex items-center gap-2">
           <SortButton mode="volume" currentMode={sortMode} icon={BarChart3} label={t.volume} onSelect={setSortMode} />
           <SortButton mode="distance" currentMode={sortMode} icon={Navigation} label={t.distance} onSelect={setSortMode} />
@@ -621,7 +620,6 @@ const Table: React.FC<{
       </div>
 
       {/* REMOVED INTERNAL MODAL RENDERING - NOW HANDLED BY DASHBOARD */}
-      </div>
     </div>
   );
 };

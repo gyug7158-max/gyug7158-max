@@ -76,7 +76,7 @@ const Dashboard: React.FC<{
     return () => clearTimeout(timer);
   }, []);
 
-  const [isPortrait, setIsPortrait] = useState(typeof window !== 'undefined' ? window.innerHeight > window.innerWidth : true);
+  const [isPortrait, setIsPortrait] = useState(typeof window !== 'undefined' ? (document.documentElement.clientHeight || window.innerHeight) > (document.documentElement.clientWidth || window.innerWidth) : true);
   const [shortData, setShortData] = useState<RowData[]>([]);
   const [longData, setLongData] = useState<RowData[]>([]);
   const [rankMap, setRankMap] = useState<Record<string, number>>({});
@@ -641,7 +641,9 @@ const Dashboard: React.FC<{
     document.addEventListener('mousedown', handleClickOutside);
 
     const handleResize = () => {
-      setIsPortrait(window.innerHeight > window.innerWidth);
+      const h = document.documentElement.clientHeight || window.innerHeight;
+      const w = document.documentElement.clientWidth || window.innerWidth;
+      setIsPortrait(h > w);
     };
     window.addEventListener('resize', handleResize);
 
