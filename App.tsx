@@ -156,29 +156,6 @@ const App: React.FC = () => {
     localStorage.setItem('se_lang', language);
   }, [language]);
 
-  // UI Scaling for PC: Keep laptop proportions on larger screens by zooming
-  useEffect(() => {
-    const applyScaling = () => {
-      const w = window.innerWidth;
-      // Scale for any device with screen wider than benchmark (1440px)
-      if (w > 1440) {
-        const scale = w / 1440;
-        // Apply CSS zoom to document root so UI physically scales up without stretching layout widths
-        (document.documentElement as HTMLHtmlElement).style.zoom = scale.toString();
-      } else {
-        (document.documentElement as HTMLHtmlElement).style.zoom = '';
-      }
-    };
-
-    window.addEventListener('resize', applyScaling);
-    applyScaling();
-
-    return () => {
-      window.removeEventListener('resize', applyScaling);
-      (document.documentElement as HTMLHtmlElement).style.zoom = '';
-    };
-  }, []);
-
   useEffect(() => {
     const checkAuth = async () => {
       const savedToken = localStorage.getItem('se_auth_token');

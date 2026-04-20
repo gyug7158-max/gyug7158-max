@@ -520,15 +520,14 @@ const MarketScreener: React.FC<MarketScreenerProps> = ({
   const [chartHeight, setChartHeight] = useState(660);
   const [isResizing, setIsResizing] = useState(false);
 
-  const [isPortrait, setIsPortrait] = useState(typeof window !== 'undefined' ? (document.documentElement.clientHeight || window.innerHeight) > (document.documentElement.clientWidth || window.innerWidth) : true);
+  const [isPortrait, setIsPortrait] = useState(typeof window !== 'undefined' ? window.innerHeight > window.innerWidth : true);
   const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   const wasFullscreenRef = useRef(isFullscreen);
 
   const updateChartHeight = useCallback(() => {
-    // Need documentElement client sizes to respect CSS zoom so resizing math is strictly bounded by scaled layout
-    const width = document.documentElement.clientWidth || window.innerWidth;
-    const height = document.documentElement.clientHeight || window.innerHeight;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     const isPortraitNow = height > width;
     setIsPortrait(isPortraitNow);
 

@@ -1330,9 +1330,8 @@ export const CustomChartEngine: React.FC<CustomChartEngineProps> = ({
       const dpr = window.devicePixelRatio || 1;
       const rect = containerRef.current.getBoundingClientRect();
       if (rect.width === 0 || rect.height === 0) return;
-      canvas.width = (canvas.offsetWidth || rect.width) * dpr;
-      canvas.height = (canvas.offsetHeight || rect.height) * dpr;
-
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const width = rect.width - PRICE_SCALE_WIDTH;
       if (state.current.offsetX === -999) {
